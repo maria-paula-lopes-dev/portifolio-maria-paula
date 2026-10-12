@@ -1,0 +1,51 @@
+/*Box-sizing padrão*/
+*, *::after, *::before{
+    box-sizing: border-box; /*Faz com que padding e border não aumentam a largura*/
+}
+
+/*Remove margin e padding padrão*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*Base do documento*/
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh; /*Body ocupe ao menos a altura da tela*/
+    text-rendering: optimizeLegibility; /*Melhora a legibilidade do texto*/
+    -webkit-font-smoothing: antialiased; /*Suaviza fontes em navegadores WebKit (Chrome, Edge)*/
+}
+
+/*Configurações de elementos de mídia*/
+img, picture, video, canvas, svg{
+    display: block; /*Remove os espaços extras abaixo*/
+    max-width: 100%; /*Pra não ultrapassar container*/
+}
+
+/*Configurações de botões*/
+button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/*Configurações de links*/
+a{
+    text-decoration: none;
+    color: inherit; /*Herda cor do elemento pai*/
+}
+
+/*Configurações de listas*/
+ul, ol{
+    list-style: none;
+    padding: 0;
+}
+
+/*Configurações de textos*/
+h1, h2, h3, h4, h5, h6, p{
+    overflow-wrap: break-word; /*Evita que palavras grandes quebrem o layout*/
+}
