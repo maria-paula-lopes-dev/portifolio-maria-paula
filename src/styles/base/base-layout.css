@@ -2,6 +2,21 @@
 
 body{
     background-color: var(--background);
+
+    /* Grade */
+    background-image: 
+        /* Linhas verticais */
+        linear-gradient(to right, var(--surface) 0.5px, transparent 0.5px), /* Esquerda pra direita */
+
+        /* Linhas horizontais */
+        linear-gradient(to bottom, var(--surface) 0.5px, transparent 0.5px);
+
+        /* Tamanho dos quadriculados */
+        background-size: 50px 50px;
+        
+
+    font-family: "Inter", sans-serif;
+    color: var(--text);
 }
 
 /* CONTAINER GLOBAL */

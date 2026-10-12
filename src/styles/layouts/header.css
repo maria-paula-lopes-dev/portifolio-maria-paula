@@ -1,0 +1,266 @@
+@charset "UTF-8";
+
+/* Cabeçalho */
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 70px;
+
+    padding: 0 16px;
+
+    opacity: 1; /* opaco */
+    backdrop-filter: blur(8px);
+
+    background-color: var(--background);
+
+    box-shadow: var(--shadow-medium);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Barra de progresso */
+.header__progress{
+    position: absolute; /* Tira a barra de fluxo - posiciona em relação ao elemento pai mais próximo (sticky) */
+    bottom: 0; 
+    left: 0;
+
+    width: 0; /* Inicialmente */
+    height: 3px; /* Largura */
+
+    background-color: var(--highlight);
+}
+
+/* Ícones à esquerda */
+.header__logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    margin-left: 20px;
+
+    cursor: pointer;
+}
+
+/* Text header */
+.header__name{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: var(--text-large);
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+/* Ícones menu */
+.fa-code, #theme-icon, .fa-bars-staggered, .fa-xmark{
+    font-size: var(--text-large);
+}
+
+.fa-code{
+    color: var(--highlight);
+}
+
+/* Nav */
+.header__nav{
+    position: fixed; /* Preso à viewport e não ao header */
+    top: 70px; /* Abaixo do header */
+    left: 0;
+
+    width: 100%;
+    height: calc(100vh - 70px);
+
+    background-color: var(--background);
+
+    /* Escondido inicialmente */
+    transform: translateY(-100%); /* Sai 100% da tela (acima) - da sua própria altura */
+
+    /* Trasnparente */
+    opacity: 0;
+
+    /* Sem eventos */
+    position: none;
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+/* Classe de estado */
+.header__nav.is-active{
+    transform: translateY(0); /* "Puxa" o menu novamente */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Comportamento visual */
+.header__menu{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+}
+
+/* Elementos */
+.header__itens{
+    width: 100%;
+}
+
+/* Links */
+.header__links{
+    display: block;
+    padding: 20px;
+
+    font-weight: 400;
+    font-size: var(--text-small);
+    color: var(--text-muted);
+
+    border-bottom: 0.5px solid rgba(0,0,0,0.05);
+
+    /* transition: 0.3s ease-in-out; */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Apenas transição suave de cor */
+}
+
+.header__links:hover{
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+/* Container header */
+.header__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-right: 20px;
+}
+
+/* Button */
+#theme-button, .header__toggle{
+    display: flex !important; /* Porque o elemento lá dentro é um ícone */
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+    padding: 0 !important;
+
+    border: 0.2px solid var(--text);
+    border-radius: 5px; /* Cantos arredondados suaves ao invés de 50% */
+    color: var(--muted);
+    text-decoration: none;
+    background-color: transparent;
+
+    pointer-events: none;
+}
+
+#theme-icon, .header__icon {
+    font-size: var(--text-normal);
+    color: var(--text);
+
+    pointer-events: none;
+}
+
+/**/
+.header__toggle{
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.header__toggle .fa-xmark{
+    display: none;
+}
+
+/* Quando o menu estiver ativo, o hamburger esconde */
+.header__toggle.is-active .fa-bars-staggered{
+    display: none;
+}
+
+/* Quando estiver ativado, o hamburger esconde e o close aparece */
+.header__toggle.is-active .fa-xmark{
+    display: block;
+}
+
+
+/* Media query desktop */
+@media (min-width: 768px){
+
+    /* Volta ao fluxo normal */
+    .header__nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        position: static; /* volta ao fluxo */
+        transform: none; /* retira o translateY pra que ele volte para a tela */
+
+        opacity: 1;
+        pointer-events: auto;
+
+        width: auto;
+        height: auto;
+    }
+
+    /* Menu na horizontal */
+    .header__menu{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        width: fit-content; /* Trava no tamanho do conteúdo */
+    }
+
+    /* Links */
+    .header__links{
+        position: relative;
+
+        white-space: nowrap; /* Impede que quebre o texto */
+
+        padding: 8px;
+        border: none;
+    }
+
+    .header__links:hover{
+        font-weight: normal;
+        background: none;
+    }
+
+    .header__links::after{
+        content: " ";
+        position: absolute;
+        left: 0; /* Inicio do link */
+        bottom: 0; /* Na base do link */
+
+        width: 0%;
+        height: 2px;
+
+        background-color: var(--highlight);
+
+        transition: 0.5s ease-in-out;
+    }
+
+    .header__links:hover::after{
+        width: 100%;
+    }
+
+    /* Esconde o botão menu */
+    .header__toggle{
+        display: none;
+    }
+
+    .header__toggle:hover{
+        transform: scale(1.1);
+    }
+
+    #theme-button:hover, .header__toggle:hover{
+        background-color: var(--text-muted);
+    }
+}

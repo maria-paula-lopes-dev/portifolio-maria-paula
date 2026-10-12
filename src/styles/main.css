@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 /* Imports */
-@import url(base/reset.css);
-@import url(base/variables.css);
-@import url(base/base-layout.css);
+@import url("base/reset.css");
+@import url("base/variables.css");
+@import url("base/base-layout.css");
 
-@import url(layouts/header.css);
-@import url(layouts/hero.css);
-@import url(layouts/footer.css);
+@import url("layouts/header.css");
+@import url("layouts/hero.css");
+@import url("layouts/footer.css");
