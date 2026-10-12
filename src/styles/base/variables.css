@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/* Variáveis Padrão */
+:root{
+    /* Tema escuro - fundos */
+    --background: #11001c;
+    --background-alt: #1b1026;
+    --surface: #281834;
+
+    /* Textos */
+    --heading: #f5edff;
+    --text: #e4dceb;
+    --text-muted: #b9a9c9;
+
+    /* Bordas e linhas */
+    --border: #ede4ff;
+
+    /* Destaques roxos */
+    --highlight: #7c3aed;
+    --highlight-hover: #5b21b6;
+    --highlight-soft: #ede4ff;
+
+    /* Tipografias */
+    --font-text: ;
+    --font-title: ;
+    --font-detail: ;
+
+    /* Tamanhos de textos */
+    --text-small: 0.875em; /* 14px → detalhes */
+    --text-normal: 1em; /* 16px → padrão */
+    --text-large: 1.25em; /* 20px → destaque */
+
+    --title-medium: 2em; /* 32px → títulos */
+    --title-large: 2.5em; /* 40px → título principal */
+
+    /* Bordas */
+    --border: 1px solid #ede4ff; /* Borda padrão */
+
+    /* Arredondamento */
+    --radius-small: 8px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
+
+    --shadow-medium: 0 4px 12px #ede4ff13;
+}
+
+/* Aplica as cores claras quando a classe light estiver ativa */
+.light{
+    /* Tema claro — fundos */
+    --background: #ede4ff;
+    --background-alt: #f0eaf8;
+    --surface: #ffffff;
+
+    /* Tema claro — textos */
+    --heading: #352044;
+    --text: #292333;
+    --text-muted: #6d6478;
+
+    /* Bordas */
+    --border: #352044;
+
+    /* Destaques roxos */
+    --highlight: #7c3aed;
+    --highlight-hover: #5b21b6;
+    --highlight-soft: #7c3aed;
+
+    --shadow-medium-inverse: 0 4px 12px #352044d1;
+}
