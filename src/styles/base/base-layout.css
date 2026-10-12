@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body{
+    background-color: var(--background);
+}
+
+/* CONTAINER GLOBAL */
+.container{
+    width: 100%;
+    max-width: 1200px; /* Para de crescer no Desktop */
+
+    /* Centraliza o bloco */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Margin de segurança interna */
+    padding-left: 20px;
+    padding-right: 20px;
+}
