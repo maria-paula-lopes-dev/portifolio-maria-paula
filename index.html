@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portifólio|Maria Paula</title>
+
+    <!-- Biblioteca de ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" integrity="sha384-Bk5cbLkZQ5raZ0+H2/+VbfYx3WpvxvQK4zqXZr7sYODuaX7bKXoSOnipQxkaS8sv" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="src/assets/favicon.svg" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/styles/main.css">
+
+    <!-- JS -->
+    <script src="src/scripts/script.js" defer></script>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="header">
+        <!-- Barra de progresso -->
+        <div class="header__progress" id="progress-bar"></div>
+
+        <!-- Logo -->
+        <a href="#" class="header__logo">
+            <i class="fa-solid fa-code"></i>
+
+            <p class="header__name">Maria Paula</p>
+        </a>
+
+        <!-- Menu -->
+        <nav class="header__nav">
+            <ul class="header__menu">
+
+                <li class="header__itens">
+                    <a href="#" class="header__links">Projeto</a>
+                </li>
+
+                <li class="header__itens">
+                    <a href="#" class="header__links">Trajetória</a>
+                </li>
+
+                <li class="header__itens">
+                    <a href="#" class="header__links">Formação</a>
+                </li>
+
+                <li class="header__itens">
+                    <a href="#" class="header__links">Tecnologias</a>
+                </li>
+
+                <li class="header__itens">
+                    <a href="#" class="header__links">Contato</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Envelop dos botões -->
+        <div class="header__container">
+            <!-- Tema -->
+            <a href="#" id="theme-button">
+                <i class="bi bi-sun" id="theme-icon"></i>
+            </a>
+
+            <!-- Toggle -->
+            <button class="header__toggle" aria-label="Abrir menu">
+                <!-- ÍCONE: estado FECHADO (hamburger) -->
+                <i class="fa-solid fa-bars-staggered header__icon"></i>
+
+                <!-- ÍCONE: estado ABERTO (close) -->
+                <i class="fa-solid fa-xmark header__icon"></i>
+            </button>
+            
+        </div>
+    </header>
+
+</body>
+</html>
