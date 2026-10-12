@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>Favicon — símbolo de código</title>
+  <rect width="256" height="256" fill="#100016"/>
+  <rect x="1" y="1" width="254" height="254" fill="none" stroke="#873BFF" stroke-width="2"/>
+  <g fill="none" stroke="#873BFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M81 92 35 128 81 164"/>
+    <path d="M145 75 111 181"/>
+    <path d="M175 92 221 128 175 164"/>
+  </g>
+</svg>
