@@ -8,3 +8,21 @@
 @import url("layouts/header.css");
 @import url("layouts/hero.css");
 @import url("layouts/footer.css");
+
+
+/* Feixe de luz que acompanha o cursor */
+.efeito-mouse {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 9999;
+
+    background: radial-gradient(
+        circle 500px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+        rgba(181, 0, 255, 0.07) 0%,
+        rgba(181, 0, 255, 0.035) 40%,
+        rgba(181, 0, 255, 0.012) 70%,
+        transparent 100%
+    );
+}

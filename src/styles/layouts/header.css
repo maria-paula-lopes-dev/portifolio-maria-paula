@@ -85,9 +85,10 @@
     opacity: 0;
 
     /* Sem eventos */
-    position: none;
+    pointer-events: none;
     transition: 0.3s ease;
     z-index: 999;
+
 }
 
 /* Classe de estado */
@@ -123,7 +124,7 @@
     border-bottom: 0.5px solid rgba(0,0,0,0.05);
 
     /* transition: 0.3s ease-in-out; */
-    transition: background-color 0.2s ease, color 0.2s ease; /* Apenas transição suave de cor */
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .header__links:hover{
@@ -158,7 +159,11 @@
     text-decoration: none;
     background-color: transparent;
 
-    pointer-events: none;
+    /* Deixa o botão meio apagado por padrão (tanto no mobile quanto no desktop) */
+    opacity: 0.5;
+
+    /* Transição suave para quando o hover acontecer */
+    transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
 
 #theme-icon, .header__icon {
@@ -253,14 +258,12 @@
 
     /* Esconde o botão menu */
     .header__toggle{
-        display: none;
+        display: none !important;
     }
 
-    .header__toggle:hover{
-        transform: scale(1.1);
-    }
-
-    #theme-button:hover, .header__toggle:hover{
-        background-color: var(--text-muted);
+    #theme-button:hover{
+        /* Tira o apagado (volta a opacidade total) e coloca um fundo bem suave para destacar */
+        opacity: 1;
+        transform: scale(1.05);
     }
 }
