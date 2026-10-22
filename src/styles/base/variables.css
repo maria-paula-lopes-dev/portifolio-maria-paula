@@ -14,9 +14,6 @@
     --text: #e4dceb;
     --text-muted: #b9a9c9;
 
-    /* Bordas e linhas */
-    --border: #ede4ff;
-
     /* Destaques roxos */
     --highlight: #7c3aed;
     --highlight-hover: #5b21b6;
@@ -31,6 +28,8 @@
     --text-small: 0.875em; /* 14px → detalhes */
     --text-normal: 1em; /* 16px → padrão */
     --text-large: 1.25em; /* 20px → destaque */
+
+    --text-label: 2em;
 
     --title-medium: 2em; /* 32px → títulos */
     --title-large: 2.5em; /* 40px → título principal */
@@ -59,7 +58,7 @@
     --text-muted: #6d6478;
 
     /* Bordas */
-    --border: #352044;
+    --border: 1px solid #352044;
 
     /* Destaques roxos */
     --highlight: #7c3aed;

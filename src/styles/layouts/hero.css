@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+/* Hero */
+.main{
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 36px 24px 48px; /* Espaçamento interno */
+    overflow: hidden; /* Evita rolagens indesejadas */
+}
+
+.hero__home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+
+    max-width: 1100px;
+    margin: 0 auto; /* centraliza */
+}
+
+.hero__visual{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+}
+
+.hero__card{
+    /* Referência para a camada roxa */
+    position: relative;
+    
+    /* Mantém o cartão acima da camada decorativa */
+    z-index: 1;
+
+    width: 100%;
+    max-width: 280px;
+    padding: 20px;
+
+    border: 1px solid rgba(237, 228, 255, 0.14);
+    border-radius: var(--radius-medium);
+    background-color: var(--highlight);
+
+    text-align: center;
+
+    transition: transform 0.3s ease;
+}
+
+.hero__card-tag{
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-family: monospace;
+    font-size: var(--text-small);
+    letter-spacing: 2px;
+    color: var(--highlight, #9d4edd);
+    text-transform: uppercase; /* maiúsculo */
+}
+
+/* Camada roxa */
+.hero__card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    border-radius: inherit; /* arredonda como o cartão */
+    background-color: var(--surface);
+
+    /* Desloca a camada para a direita e para baixo */
+    transform: translate(8px, 10px);
+}
+
+.hero__image{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--radius-small);
+}
+
+.hero__image img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    /* Anima o zoom da foto suavemente */
+    transition: transform 0.4s ease;
+}
+
+.hero__legend{
+    /* Afasta a legenda da foto */
+    padding-top: 16px;
+}
+
+.hero__legend h2{
+    font-weight: 700;
+}
+
+.hero__legend p{
+    margin: 4px;
+    
+    color: var(--text-muted);
+    font-size: var(--text-large);
+}
+
+.hero__content {
+    width: 100%; /* Largura completa no mobile */
+    max-width: 580px; /* Largura máxima para legibilidade */
+    text-align: center; /* Centraliza todo o texto no mobile */
+}
+
+#hero__label{
+    /* Permite aplicar espaçamento e borda */
+    display: inline-block;
+
+    margin-bottom: 20px;
+    padding: 8px 16px;
+
+    border: 1px solid var(--highlight);
+    border-radius: var(--radius-small);
+
+    font-family: monospace;
+    font-size: var(--text-large);
+    color: var(--highlight);
+
+    background-color: var(--surface);
+}
+
+.hero__presentation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero__title{
+    /* Adapta o tamanho do título à largura da tela */
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 800;
+    /* Aproxima as linhas do título */
+    line-height: 1.2;
+    /* Aproxima as letras para um visual mais compacto */
+    letter-spacing: -1px;
+}
+
+.hero__title span{
+    display: block; /* Coloca o nome em uma nova linha */
+    color: var(--highlight);
+}
+
+.hero__description, .hero__description-muted{
+    /* Limita a largura do parágrafo */
+    max-width: 440px;
+    margin: 16px auto 0; 
+}
+
+.hero__description{
+    font-size: var(--text-large);
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.hero__description-muted{
+    font-size: var(--text-normal);
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+
+
+@media (min-width: 768px){
+    .main{
+        padding: 60px 8%;
+    }
+
+    .hero__home {
+        flex-direction: row; /* Coloca os elementos lado a lado (Texto à esquerda, Card à direita) */
+        justify-content: space-between; /* Distribui com espaço entre eles */
+        align-items: center; /* Alinha o card e texto pelo centro vertical */
+        gap: 48px; /* Espaçamento entre o texto e a foto */
+    }
+
+    .hero__content{
+        order: 1;
+        /* Texto ocupa espaço restante */
+        flex: 1;
+
+        min-width: 0;
+        text-align: left;
+    }
+
+    .hero__presentation{
+        align-items: flex-start;
+    }
+
+    .hero__description, .hero__description-muted {
+        margin: 16px 0 0; /* Remove a centralização automática da margem no desktop */
+    }
+
+    .hero__visual {
+        order: 2; /* Garante que o card fique na segunda coluna (direita) */
+        width: auto;
+        flex: 0 0 320px; /* Define largura fixa ideal para a coluna do card */
+        justify-content: flex-end;
+    }
+
+    .hero__card {
+        /* Aumenta o card no desktop */
+        width: 310px;
+        padding: 22px;
+    }
+
+    .hero__card:hover {
+        /* Reduz a inclinação e levanta o cartão */
+        transform: rotate(2deg) translateY(-5px);
+    }
+
+    
+    /* Aumenta ligeiramente a foto quando o cartão recebe hover */
+    .hero__card:hover .hero__image img{
+        /* Aumenta a imagem em 4% */
+        transform: scale(1.04);
+    }
+
+    #hero__label {
+        /* Ajusta a distância entre a etiqueta e o título */
+        margin-bottom: 24px;
+    }
+}
