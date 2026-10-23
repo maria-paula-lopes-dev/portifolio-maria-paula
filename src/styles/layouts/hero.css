@@ -157,6 +157,10 @@
     color: var(--highlight);
 
     background: rgba(124, 58, 237, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .hero__presentation{
@@ -214,6 +218,32 @@
     color: var(--text-muted);
 }
 
+.hero__stacks{
+    display: flex;
+    flex-wrap: wrap; /* permite quebrar de forma responsiva */
+    gap: 8px;
+
+    margin-top: 16px;
+}
+
+.hero__stack{
+    padding: 6px 10px;
+
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: var(--text);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: var(--radius-small);
+    background: var(--surface);
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
 /* Interações que tanham mouse */
 @media (hover: hover) and (pointer: fine){
     .hero__card:hover {
@@ -227,6 +257,26 @@
     .hero__card:hover .hero__image img {
         /* Amplia a imagem suavemente */
         transform: scale(1.04);
+    }
+
+    #hero__label:hover{
+        transform: translateY(-2px);
+
+        /* Reforça a borda no hover */
+        border-color: var(--highlight-soft);
+        background-color: var(--background-alt);
+
+        cursor: pointer;
+    }
+
+    .hero__stack:hover{
+        transform: translateY(-2px);
+
+        /* Reforça a borda no hover */
+        border-color: rgba(124, 58, 237, 0.45);
+        background-color: var(--background-alt);
+
+        cursor: pointer;
     }
 }
 
