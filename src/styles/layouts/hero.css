@@ -11,16 +11,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 40px;
 
-    max-width: 1100px;
-    margin: 0 auto; /* centraliza */
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto; /* centraliza o conjunto na página */
 }
 
 .hero__visual{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     
     width: 100%;
 }
@@ -28,21 +30,24 @@
 .hero__card{
     /* Referência para a camada roxa */
     position: relative;
-    
-    /* Mantém o cartão acima da camada decorativa */
-    z-index: 1;
+    isolation: isolate; /* Cria novo contexto de empilhamento em um elemento - para que não haja quebras de layout */
 
     width: 100%;
-    max-width: 280px;
-    padding: 20px;
+    max-width: 330px;
+    padding: 22px;
 
     border: 1px solid rgba(237, 228, 255, 0.14);
     border-radius: var(--radius-medium);
-    background-color: var(--highlight);
+    background: var(--background-alt);
+
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 
     text-align: center;
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .hero__card-tag{
@@ -51,27 +56,39 @@
     margin-bottom: 14px;
 
     font-family: monospace;
-    font-size: var(--text-small);
+    font-size: var(--text-normal);
     letter-spacing: 2px;
+    line-height: 1.5;
     color: var(--highlight, #9d4edd);
     text-transform: uppercase; /* maiúsculo */
 }
 
 /* Camada roxa */
 .hero__card::before{
-    content: "";
+    content: ""; /* cria camada sem adicionar HTML */
+
+    /* Posiciona atrás do card */
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+
+    /*
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        inset: 0; Ocupa toda a área do elemento pai
+    */
+    inset: 0; /* Shorthand - define as distâncias de um elemento em relação às bordas do elemento pai */
     z-index: -1;
 
-    border-radius: inherit; /* arredonda como o cartão */
+    border-radius: inherit; /* arredonda como o cartão - efeito deslocado */
     background-color: var(--surface);
 
     /* Desloca a camada para a direita e para baixo */
-    transform: translate(8px, 10px);
+    transform: translate(10px, 12px);
+
+    /* Discreto */
+    opacity: 0.9;
 }
 
 .hero__image{
@@ -82,11 +99,14 @@
 }
 
 .hero__image img{
+    display: block; /* remove o espaço extra de imagens inlines */
+
     width: 100%;
     height: 100%;
 
+    /* Evita distorções */
     object-fit: cover;
-    object-position: center;
+    object-position: center 35%;
 
     /* Anima o zoom da foto suavemente */
     transition: transform 0.4s ease;
@@ -98,19 +118,24 @@
 }
 
 .hero__legend h2{
+    margin: 0;
     font-weight: 700;
+    line-height: 1.35;
 }
 
 .hero__legend p{
-    margin: 4px;
+    margin: 4px 0 0; /* nome - descrição */
     
+    font-size: var(--text-normal);
+    line-height: 1.5;
     color: var(--text-muted);
-    font-size: var(--text-large);
 }
 
 .hero__content {
     width: 100%; /* Largura completa no mobile */
-    max-width: 580px; /* Largura máxima para legibilidade */
+    max-width: 720px; /* Largura máxima para legibilidade */
+    min-width: 0; /* Evita que as palavras grandes estourem layout */
+
     text-align: center; /* Centraliza todo o texto no mobile */
 }
 
@@ -118,33 +143,43 @@
     /* Permite aplicar espaçamento e borda */
     display: inline-block;
 
-    margin-bottom: 20px;
-    padding: 8px 16px;
+    margin-bottom: 28px;
+    padding: 9px 16px;
 
     border: 1px solid var(--highlight);
     border-radius: var(--radius-small);
 
     font-family: monospace;
-    font-size: var(--text-large);
+    font-size: var(--text-normal);
+    line-height: 1.5;
+    text-align: center;
     color: var(--highlight);
 
-    background-color: var(--surface);
+    background: rgba(124, 58, 237, 0.12);
 }
 
 .hero__presentation{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 100%;
 }
 
 .hero__title{
+    /* Pra não ficar tão largo */
+    max-width: 100%;
+    overflow-wrap: break-word;
+
+    margin: 0; /* padrão */
+
     /* Adapta o tamanho do título à largura da tela */
-    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-size: clamp(2.2rem, 5.2vw, 5rem);
     font-weight: 800;
     /* Aproxima as linhas do título */
-    line-height: 1.2;
-    /* Aproxima as letras para um visual mais compacto */
-    letter-spacing: -1px;
+    line-height: 1.08;
+    /* Aproxima as letras */
+    letter-spacing: -0.045em;
 }
 
 .hero__title span{
@@ -154,11 +189,16 @@
 
 .hero__description, .hero__description-muted{
     /* Limita a largura do parágrafo */
-    max-width: 440px;
-    margin: 16px auto 0; 
+    width: 100%;
+    max-width: 600px;
+
+    /* Pra não quebrar o leyout */
+    overflow-wrap: break-word;
 }
 
 .hero__description{
+    margin: 22px 0 0;
+
     font-size: var(--text-large);
     font-weight: 600;
     line-height: 1.6;
@@ -166,68 +206,135 @@
 }
 
 .hero__description-muted{
+    margin: 16px 0 0;
+
     font-size: var(--text-normal);
-    line-height: 1.4;
+    line-height: 1.65;
     color: var(--text-muted);
 }
 
+/* Interações que tanham mouse */
+@media (hover: hover) and (pointer: fine){
+    .hero__card:hover {
+        /* Eleva discretamente o card */
+        transform: translateY(-5px);
 
+        /* Reforça a borda no hover */
+        border-color: rgba(124, 58, 237, 0.45);
+    }
+
+    .hero__card:hover .hero__image img {
+        /* Amplia a imagem suavemente */
+        transform: scale(1.04);
+    }
+}
+
+/* Tablets */
 @media (min-width: 768px){
-    .main{
-        padding: 60px 8%;
+    .main {
+        /* Mais espaço ao redor do hero */
+        padding: 56px clamp(32px, 5vw, 80px) 64px;
     }
 
     .hero__home {
-        flex-direction: row; /* Coloca os elementos lado a lado (Texto à esquerda, Card à direita) */
-        justify-content: space-between; /* Distribui com espaço entre eles */
-        align-items: center; /* Alinha o card e texto pelo centro vertical */
-        gap: 48px; /* Espaçamento entre o texto e a foto */
-    }
+        /* Texto à esquerda e card à direita */
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        align-items: center;
 
-    .hero__content{
-        order: 1;
-        /* Texto ocupa espaço restante */
-        flex: 1;
-
-        min-width: 0;
-        text-align: left;
-    }
-
-    .hero__presentation{
-        align-items: flex-start;
-    }
-
-    .hero__description, .hero__description-muted {
-        margin: 16px 0 0; /* Remove a centralização automática da margem no desktop */
+        /* Espaço entre as duas colunas */
+        column-gap: clamp(36px, 5vw, 72px);
+        row-gap: 40px;
     }
 
     .hero__visual {
-        order: 2; /* Garante que o card fique na segunda coluna (direita) */
-        width: auto;
-        flex: 0 0 320px; /* Define largura fixa ideal para a coluna do card */
-        justify-content: flex-end;
+        /* O card aparece à direita */
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: center;
+
+        width: 100%;
     }
 
     .hero__card {
-        /* Aumenta o card no desktop */
-        width: 310px;
+        /* Aumenta o card em relação ao mobile */
+        width: 100%;
+        max-width: 330px;
         padding: 22px;
     }
 
-    .hero__card:hover {
-        /* Reduz a inclinação e levanta o cartão */
-        transform: rotate(2deg) translateY(-5px);
-    }
+    .hero__content {
+        /* O conteúdo ocupa a coluna esquerda */
+        grid-column: 1;
+        grid-row: 1;
 
-    
-    /* Aumenta ligeiramente a foto quando o cartão recebe hover */
-    .hero__card:hover .hero__image img{
-        /* Aumenta a imagem em 4% */
-        transform: scale(1.04);
+        width: 100%;
+        max-width: none;
+
+        /* Alinhamento à esquerda */
+        text-align: left;
     }
 
     #hero__label {
-        /* Ajusta a distância entre a etiqueta e o título */
-        margin-bottom: 24px;
+        /* Etiqueta no topo */
+        margin-bottom: 28px;
+    }
+
+    .hero__presentation {
+        /* Alinha título e descrições à esquerda */
+        align-items: flex-start;
+    }
+
+    .hero__title {
+        font-size: clamp(2.8rem, 4.3vw, 4.6rem);
+        line-height: 1.08;
+    }
+
+    .hero__description,
+    .hero__description-muted {
+        /* Remove a centralização automática */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Telas estreitas */
+@media (max-width: 360px) {
+    .main {
+        padding-inline: 16px;
+    }
+
+    .hero__home {
+        gap: 32px;
+    }
+
+    .hero__card {
+        max-width: 290px;
+        padding: 18px;
+    }
+
+    .hero__title {
+        font-size: 2.25rem;
+    }
+
+    #hero__label {
+        padding: 8px 10px;
+        font-size: var(--text-small);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__card,
+    .hero__image img {
+        /* Evita animações para quem prefere menos movimento */
+        transition: none;
+    }
+
+    .hero__card:hover {
+        transform: none;
+    }
+
+    .hero__card:hover .hero__image img {
+        transform: none;
     }
 }
